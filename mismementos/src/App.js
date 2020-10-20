@@ -1,7 +1,12 @@
 import React from 'react';
-import Map from './Map'
-import MemoryForm from './MemoryForm'
+// import Map from './Map'
+// import MemoryForm from './MemoryForm'
+import ProfileContainer from './ProfileComponents/ProfileContainer'
+import NavBar from './components/NavBar'
 import './App.css';
+
+import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
+
 
 class App extends React.Component {
 
@@ -57,20 +62,40 @@ class App extends React.Component {
         memories: res.user.memories,
         token: res.user.token
       })
+      this.props.history.push("/profile")
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
   render(){
     return (
-      <div>
-         <MemoryForm/>
-         <Map/>
+      //if we include a NavBar it would go here
+      
+      <div >
+        <NavBar />
+        {/* <ProfileContainer/>
+         */}
+        
       </div>
+      
     ) 
   }
 
 
 }
 
-export default App;
+// let magicalComponent = withRouter(App)
+export default App
