@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import ReactMapGL from 'react-map-gl'
+import ReactMapGL from 'react-map-gl';
+import MemoryForm from './MemoryForm'
 import './App.css';
 
 function App() {
@@ -13,14 +14,23 @@ function App() {
     zoom:10
   });
 
+//create a handleChange
+  let handleChange=(viewport)=>{
+    setViewPort(viewport)
+  }
+
+//adding a 
+
+
   return (
     <div>
+     <MemoryForm/>
      <ReactMapGL 
      {...viewport} 
      mapboxApiAccessToken={TOKEN}
-     onViewportChange={viewport=>{
-       setViewPort(viewport)
-     }}>
+     mapstyle= "mapbox://styles/ksolomon7/ckgh6bpp7060519pjac0q1pe6"
+     onViewportChange={handleChange}
+    >
      </ReactMapGL>
     </div>
   );
