@@ -1,8 +1,11 @@
 import React from 'react';
-// import Map from './Map'
-// import MemoryForm from './MemoryForm'
+import Map from './ProfileComponents/Map'
+import MemoryForm from './ProfileComponents/MemoryForm'
+
 import ProfileContainer from './ProfileComponents/ProfileContainer'
 import NavBar from './components/NavBar'
+import LoginForm from './components/LoginForm'
+
 import './App.css';
 
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
@@ -66,36 +69,77 @@ class App extends React.Component {
     }
   }
 
+  
+  renderLoginForm = (routerProps) => {
+    console.log("this is the login router props",  routerProps)
+      return <LoginForm handleSubmit={this.props.handleLoginSubmit}/>
+  }
+
+   
+  // renderRegisterForm = (routerProps) => {
+  //   console.log("this is the register router props",  routerProps)
+  //     return <RegisterForm handleSubmit={this.props.handleRegisterSubmit}/>
+  // }
+
+  renderProfile = (routerProps) => {
+    // console.log("these are routerProps", routerProps)
+    if(this.state.token) {
+      return <ProfileContainer
+        id={this.state.id}
+        username={this.state.username}
+        avatar={this.state.avatar}
+        bio={this.state.bio}
+        city={this.state.city}
+        state={this.state.state}
+        zipcode={this.state.zipcode}
+        addMemory={this.addMemory}
+      />
+    } else {
+      return <Redirect to="/login" />
+    }
+  }
+
+  handleLoginSubmit = (userInfo) => {
+    console.log("we are inside of the handle login submit")
+
+  }
+
+  handleRegisterSubmit = (userInfo) => {
+    console.log("we are inside of the handle register submit")
+
+  }
 
 
 
-
-
-
-
-
-
-
-
-
+//addMemory to state helper function
+addMemory = (newMemory) => {
+  console.log("in add memory", newMemory)
+}
 
  
   render(){
     return (
-      //if we include a NavBar it would go here
+     
       
       <div >
-        <NavBar />
-        {/* <ProfileContainer/>
-         */}
-        
+        <NavBar/>
+        <Map/>
+        <MemoryForm/>
+        <Switch>
+          {/* <Route path="/" exact component={Home}></Route> */}
+          <Route path="/login" render={this.renderLoginForm}></Route>
+          <Route path="/register" render={this.renderRegisterForm}></Route>
+          <Route path="/profile" render={this.renderProfile}></Route>
+         
+          {/* <Route render={ () => <p>Page not Found</p>}></Route> */}
+        </Switch>
+
       </div>
-      
     ) 
   }
 
 
 }
 
-// let magicalComponent = withRouter(App)
-export default App
+let magicalComponent = withRouter(App)
+export default magicalComponent
