@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Button, Form, Segment } from 'semantic-ui-react'
 
+
 class LoginForm extends React.Component{
 
     state={
@@ -10,6 +11,7 @@ class LoginForm extends React.Component{
 
   handleSubmit=(evt)=>{
       evt.preventDefault()
+      this.props.handleLoginSubmit(this.state)
   }
 
   handleChange=(evt)=>{

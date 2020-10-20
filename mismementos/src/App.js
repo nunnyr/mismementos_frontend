@@ -3,6 +3,7 @@ import Home from './components/Home'
 import ProfileContainer from './ProfileComponents/ProfileContainer'
 import NavBar from './components/NavBar'
 import LoginForm from './components/LoginForm'
+import { Button} from 'semantic-ui-react'
 
 import './App.css';
 
@@ -19,7 +20,7 @@ class App extends React.Component {
     bio: "",
     city: "",
     state: "",
-    zipcode: 10021,
+    zipcode: 10028,
     memories: [],
     token: ""
   }
@@ -47,6 +48,7 @@ class App extends React.Component {
 
   //create handleResponse
   handleResponse = (res) => {
+    console.log("first res", res)
     if(Response.error){
       console.error(res.error)
     } else {
@@ -63,14 +65,22 @@ class App extends React.Component {
         memories: res.user.memories,
         token: res.user.token
       })
+      console.log("zipcode", this.state.zipcode)
       this.props.history.push("/profile")
     }
   }
 
   
   renderLoginForm = (routerProps) => {
-    console.log("this is the login router props",  routerProps)
+    // console.log("this is the login router props",  routerProps)
+    console.log("This is token 👀", this.state.token)
+    // if(this.state.token){
+    //   return <Button onClick={this.handleLogout}>Log Out</Button> 
+    // }
+    // else if(!this.state.token){
+      console.log("in the else if 🙃")
       return <LoginForm handleLoginSubmit={this.handleLoginSubmit}/>
+    // }
   }
 
    
@@ -98,8 +108,36 @@ class App extends React.Component {
   }
 
   handleLoginSubmit = (userInfo) => {
-    console.log("we are inside of the handle login submit")
+    // console.log("we are inside of the handle login submit", userInfo)
+    fetch("http://localhost:3000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        username: userInfo.username,
+        password: userInfo.password
+      })
+    })
+    .then(res => res.json())
+    .then(this.responseHandler)
 
+  }
+
+  handleLogout = () => {
+    this.setState({
+      id: 0,
+      username: "",
+      password: "",
+      avatar: "",
+      bio: "",
+      city: "",
+      state: "",
+      zipcode: 10028,
+      memories: [],
+      token: ""
+    })
+    localStorage.clear()
   }
 
   handleRegisterSubmit = (userInfo) => {
@@ -107,6 +145,34 @@ class App extends React.Component {
 
   }
 
+  responseHandler = (res) => {
+    console.log("this be an answer 😎", res)
+
+    let {id, username, password, avatar, bio, city, state, zipcode, memories} = res.user
+    if(res.error){
+
+      console.error(res.error)
+    }
+    else {
+       
+      localStorage.token = res.token
+      this.setState({
+        id,
+        username,
+        password,
+        avatar,
+        bio,
+        city,
+        state,
+        zipcode,
+        memories,
+        token: res.token
+      })
+      // console.log("after setState 😯", password)
+      this.props.history.push("/profile")
+    }
+
+  } 
 
 
 //addMemory to state helper function
