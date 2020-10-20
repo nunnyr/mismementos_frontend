@@ -1,6 +1,6 @@
 import React from 'react';
-// import Map from './Map'
-// import MemoryForm from './MemoryForm'
+import Map from './Map'
+import MemoryForm from './MemoryForm'
 
 
 class ProfileContainer extends React.Component {
@@ -12,9 +12,8 @@ class ProfileContainer extends React.Component {
         return(
             <div>
                 <h2>We got this</h2>
-            
-                {/* <Map/>
-                <MemoryForm/> */}
+                <Map/>
+                <MemoryForm/>
              </div>
         )
 

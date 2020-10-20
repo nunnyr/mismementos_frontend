@@ -1,10 +1,11 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
+import { Header } from 'semantic-ui-react'
 
 const NavBar = () => {
     return(
         <div>
-            <h1>present</h1>
+              <Header as='h1'>Mis Mementos</Header>
         
         <ul className="nav">
             <li>

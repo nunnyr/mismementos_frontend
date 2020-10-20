@@ -1,7 +1,5 @@
 import React from 'react';
-import Map from './ProfileComponents/Map'
-import MemoryForm from './ProfileComponents/MemoryForm'
-
+import Home from './components/Home'
 import ProfileContainer from './ProfileComponents/ProfileContainer'
 import NavBar from './components/NavBar'
 import LoginForm from './components/LoginForm'
@@ -72,7 +70,7 @@ class App extends React.Component {
   
   renderLoginForm = (routerProps) => {
     console.log("this is the login router props",  routerProps)
-      return <LoginForm handleSubmit={this.props.handleLoginSubmit}/>
+      return <LoginForm handleLoginSubmit={this.handleLoginSubmit}/>
   }
 
    
@@ -123,10 +121,8 @@ addMemory = (newMemory) => {
       
       <div >
         <NavBar/>
-        <Map/>
-        <MemoryForm/>
         <Switch>
-          {/* <Route path="/" exact component={Home}></Route> */}
+          <Route path="/" exact component={Home}></Route>
           <Route path="/login" render={this.renderLoginForm}></Route>
           <Route path="/register" render={this.renderRegisterForm}></Route>
           <Route path="/profile" render={this.renderProfile}></Route>
