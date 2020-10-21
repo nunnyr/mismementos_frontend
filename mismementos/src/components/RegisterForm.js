@@ -21,24 +21,25 @@ class RegisterForm extends React.Component{
     }
 
     handleSubmit=(evt)=>{
-        console.log('Handle submit')
+        evt.preventdefault()
+       this.props.handleRegisterSubmit(this.state)
     }
 
     render(){
     
         let {username, password, avatar, bio, city, state, zipcode}= this.state
         return(
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
              <Form.Group unstackable widths={2}>
-                 <Form.Input label='Username' placeholder='Username' value={username} onChange={this.handleChange}/>
-                 <Form.Input label='Password' placeholder='Password' value={password} onChange={this.handleChange}/>
+                 <Form.Input label='Username' placeholder='Username' name="username" value={username} onChange={this.handleChange}/>
+                 <Form.Input label='Password' placeholder='Password' name="password" value={password} onChange={this.handleChange}/>
              </Form.Group>
              <Form.Group widths={2}>
-                 <Form.Input label='Avatar' placeholder='Avatar' value={avatar} onChange={this.handleChange}/>
-                 <Form.Input label='Bio' placeholder='Bio' value={bio} onChange={this.handleChange}/>
-                 <Form.Input label='City' placeholder='City' value={city} onChange={this.handleChange}/>
-                 <Form.Input label='State' placeholder='State' value={state} onChange={this.handleChange}/>
-                 <Form.Input label='zipcode' placeholder='Zipcode' value={zipcode} onChange={this.handleChange}/>
+                 <Form.Input label='Avatar' placeholder='Avatar' name="avatar" value={avatar} onChange={this.handleChange}/>
+                 <Form.Input label='Bio' placeholder='Bio' name="bio" value={bio} onChange={this.handleChange}/>
+                 <Form.Input label='City' placeholder='City' name="city" value={city} onChange={this.handleChange}/>
+                 <Form.Input label='State' placeholder='State' name="state" value={state} onChange={this.handleChange}/>
+                 <Form.Input label='Zipcode' placeholder='Zipcode' name="zipcode" value={zipcode} onChange={this.handleChange}/>
              </Form.Group>
              <Button type='submit'>Register</Button>
             </Form>

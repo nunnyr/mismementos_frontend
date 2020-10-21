@@ -43,7 +43,6 @@ class App extends React.Component {
   }
 
 
-
   //create handleResponse for login information for user
   handleResponse = (res) => {
     // console.log("first res", res)
@@ -63,13 +62,11 @@ class App extends React.Component {
         memories: res.user.memories,
         token: res.user.token
       })
-      // console.log("zipcode", this.state.zipcode)
       this.props.history.push("/profile")
     }
   }
 
   // login form for existing user
-
   renderLoginForm = (routerProps) => {
     // console.log("this is the login router props",  routerProps)
     // console.log("This is token 👀", this.state.token)
@@ -81,15 +78,15 @@ class App extends React.Component {
     }
   }
 
+ 
   // rendering registration form
-
   renderRegisterForm = (routerProps) => {
     // console.log("this is the register router props",  routerProps)
-      return <RegisterForm handleSubmit={this.handleRegisterSubmit}/>
+      return <RegisterForm handleRegisterSubmit={this.handleRegisterSubmit}/>
   }
 
   renderProfile = (routerProps) => {
-    // console.log("these are routerProps", routerProps)
+    console.log("these are routerProps", routerProps)
      if(this.state.token){
       return <ProfileContainer
         id={this.state.id}
@@ -99,9 +96,12 @@ class App extends React.Component {
         city={this.state.city}
         state={this.state.state}
         zipcode={this.state.zipcode}
+        token={this.state.token}
         addMemory={this.addMemory}
       />
-    } else {
+    } 
+    // console.log("this is state in render profile", this.state.token)
+    else {
       return <Redirect to="/login" />
     }
   }
@@ -122,8 +122,6 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(this.handleResponse)
-    // .then(this.responseHandler)
-
   }
 
   handleLogout = () => {
@@ -144,37 +142,26 @@ class App extends React.Component {
 
   handleRegisterSubmit = (userInfo) => {
     console.log("we are inside of the handle register submit")
-
-  }
-
-  responseHandler = (res) => {
-    // console.log("this be an answer 😎", res)
-
-    let {id, username, password, avatar, bio, city, state, zipcode, memories} = res.user
-    if(res.error){
-
-      console.error(res.error)
-    }
-    else {
-       
-      localStorage.token = res.token
-      this.setState({
-        id,
-        username,
-        password,
-        avatar,
-        bio,
-        city,
-        state,
-        zipcode,
-        memories,
-        token: res.token
+    let {username, password, avatar, bio, city, state, zipcode}= userInfo.user
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        avatar: avatar,
+        bio:bio,
+        city:city,
+        state:state,
+        zipcode:zipcode
       })
-      // console.log("after setState 😯", password)
-      this.props.history.push("/profile")
-    }
-
-  } 
+    })
+    .then(res => res.json())
+    .then(this.handleResponse)
+  
+  }
 
 
 //addMemory to state helper function
@@ -205,3 +192,46 @@ addMemory = (newMemory) => {
 
 let magicalComponent = withRouter(App)
 export default magicalComponent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Response Handler for information
+// responseHandler = (res) => {
+//   // console.log("this be an answer 😎", res)
+
+//   let {id, username, password, avatar, bio, city, state, zipcode, memories} = res.user
+//   if(res.error){
+
+//     console.error(res.error)
+//   }
+//   else {
+     
+//     localStorage.token = res.token
+//     this.setState({
+//       id,
+//       username,
+//       password,
+//       avatar,
+//       bio,
+//       city,
+//       state,
+//       zipcode,
+//       memories,
+//       token: res.token
+//     })
+//     // console.log("after setState 😯", password)
+//     this.props.history.push("/profile")
+//   }
+// } 
