@@ -7,14 +7,23 @@ class ProfileContainer extends React.Component {
     
     render(){
        
-        let allMemories= this.props.memories.map((singleMemory)=>{
+        // if(this.props.memories)
+        //Why are memories not being passed down and if there are no memories 
+        //then the form 100% needs to show up to add
+
+        
+        let allMemories= this.props.memories.map((singleMemory)=>{ 
             return <MemoryContainer key={singleMemory.id} 
                                     memories={singleMemory}
+                                    addMemory={this.props.addMemory}
                                     token={this.props.token}
+
             />
         })
+        
+       
 
-        let {username, avatar, bio, city, state, zipcode, token}=this.props
+        let {username, avatar, bio, city, state, zipcode}=this.props
         return(
             <Segment>
 

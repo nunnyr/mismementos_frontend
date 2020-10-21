@@ -173,14 +173,14 @@ addMemory = (newMemory) => {
   this.setState({
     memories:copyOfMemories
   })
-  console.log("in add memory", newMemory)
+  //console.log("in add memory", newMemory)
 }
 
  
   render(){
     return (
       <div >
-        <NavBar/>
+        <NavBar token={this.state.token}/>
         <Switch>
           <Route path="/" exact component={Home}></Route>
           <Route path="/login" render={this.renderLoginForm}></Route>

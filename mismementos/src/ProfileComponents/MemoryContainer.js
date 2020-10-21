@@ -1,19 +1,32 @@
 import React from 'react'
-// import Map from './Map'
-// import MemoryForm from './MemoryForm'
-import {Header, Segment, Icon, Popup,Card} from 'semantic-ui-react'
+import Map from './Map'
+import MemoryForm from './MemoryForm'
+import {Header, Segment, Icon, Popup, Card, Button} from 'semantic-ui-react'
 
 class MemoryContainer extends React.Component{
 
+
+
+    handleDeleteClick = () => {
+        
+    } 
+
+
     render(){
+
+        
         // console.log("this is memory container", this.props)
         let {title, about, address, city, state, zipcode}= this.props.memories
-        
+        console.log("this is the memory count", this.props.memories)
         return(
+            <div>
             <Segment>
-                    <Popup trigger={<Icon circular name='heart' />} wide='very'>
+                    <Popup trigger={<Icon circular name='heart' color="red" />} wide='very'>
                         {title}
                     </Popup>
+
+                    <Button floated="right" onClick={this.handleDeleteClick}> X </Button>
+
                     <Card.Description>
                         <span>About: {about}</span> 
                     </Card.Description>
@@ -29,8 +42,15 @@ class MemoryContainer extends React.Component{
                     </Card.Description>
                     <Card.Description>
                         <span>Zipcode: {zipcode}</span>
-                    </Card.Description>
+                    </Card.Description>    
             </Segment>
+
+                 {/* if(this.props.memories){ */}
+                    
+                    {/* <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/> */}
+                 {/* } */}
+                    <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/>
+            </div>
         )
     }
 

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Map from '../ProfileComponents/Map'
 import {NavLink} from 'react-router-dom'
 import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
-const NavBar = () => {
+
+const NavBar = (props) => {
+    // console.log("😰", props)
+  
+
     return(
         <div>
             <Segment basic inverted>
@@ -39,8 +44,16 @@ const NavBar = () => {
                 <Sidebar.Pusher>
                 <Segment basic>
                     {/* <Header as='h3'>Application Content</Header> */}
-                    <Image src='https://miro.medium.com/max/2600/0*xTG-uAPqeKqDrPw4.png' />
-                </Segment>
+                    {props.token ? <Map/> : <Image src='https://miro.medium.com/max/2600/0*xTG-uAPqeKqDrPw4.png' />}
+                    
+                    {/* <Map/> */}
+                    {/* <Image src='https://miro.medium.com/max/2600/0*xTG-uAPqeKqDrPw4.png' /> */}
+                 
+
+
+
+
+                    </Segment>
                 </Sidebar.Pusher>
             </Sidebar.Pushable>
               
