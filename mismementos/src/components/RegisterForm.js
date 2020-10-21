@@ -21,7 +21,7 @@ class RegisterForm extends React.Component{
     }
 
     handleSubmit=(evt)=>{
-        evt.preventdefault()
+       evt.preventDefault()
        this.props.handleRegisterSubmit(this.state)
     }
 

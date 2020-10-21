@@ -37,15 +37,15 @@ class App extends React.Component {
         }
       })
       .then(res => res.json())
-      .then(this.handleResponse) 
+      .then(this.helpHandleResponse) 
 
     }
   }
 
 
   //create handleResponse for login information for user
-  handleResponse = (res) => {
-    // console.log("first res", res)
+  helpHandleResponse = (res) => {
+    console.log("first res", res)
     if(res.error){
       console.error(res.error)
     } else {
@@ -60,8 +60,9 @@ class App extends React.Component {
         state: res.user.state,
         zipcode: res.user.zipcode,
         memories: res.user.memories,
-        token: res.user.token
+        token: res.token
       })
+      // console.log(this.state.token)
       this.props.history.push("/profile")
     }
   }
@@ -86,9 +87,11 @@ class App extends React.Component {
   }
 
   renderProfile = (routerProps) => {
-    console.log("these are routerProps", routerProps)
-     if(this.state.token){
+    // console.log("these are routerProps", routerProps)
+    // console.log("this is token in renderProfile", this.state.token) 
+    if(this.state.token){
       return <ProfileContainer
+        key={this.state.id}
         id={this.state.id}
         username={this.state.username}
         avatar={this.state.avatar}
@@ -97,6 +100,7 @@ class App extends React.Component {
         state={this.state.state}
         zipcode={this.state.zipcode}
         token={this.state.token}
+        memories={this.state.memories}
         addMemory={this.addMemory}
       />
     } 
@@ -113,7 +117,7 @@ class App extends React.Component {
     fetch("http://localhost:3000/users/login", {
       method: "POST",
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "Application/json"
       },
       body: JSON.stringify({
         username: userInfo.username,
@@ -121,8 +125,31 @@ class App extends React.Component {
       })
     })
     .then(res => res.json())
-    .then(this.handleResponse)
+    .then(this.helpHandleResponse)
   }
+
+
+  handleRegisterSubmit = (userInfo) => {
+    // console.log("we are inside of the handle register submit", userInfo)
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/json"
+      },
+      body: JSON.stringify({
+        username: userInfo.username,
+        password: userInfo.password,
+        avatar: userInfo.avatar,
+        bio:userInfo.bio,
+        city:userInfo.city,
+        state:userInfo.state,
+        zipcode:userInfo.zipcode
+      })
+    })
+    .then(res => res.json())
+    .then(this.helpHandleResponse)
+  
+     }
 
   handleLogout = () => {
     this.setState({
@@ -140,32 +167,12 @@ class App extends React.Component {
     localStorage.clear()
   }
 
-  handleRegisterSubmit = (userInfo) => {
-    console.log("we are inside of the handle register submit")
-    let {username, password, avatar, bio, city, state, zipcode}= userInfo.user
-    fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json"
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-        avatar: avatar,
-        bio:bio,
-        city:city,
-        state:state,
-        zipcode:zipcode
-      })
-    })
-    .then(res => res.json())
-    .then(this.handleResponse)
-  
-  }
-
-
 //addMemory to state helper function
 addMemory = (newMemory) => {
+  let copyOfMemories= [...this.state.memory, newMemory]
+  this.setState({
+    memories:copyOfMemories
+  })
   console.log("in add memory", newMemory)
 }
 
@@ -190,8 +197,8 @@ addMemory = (newMemory) => {
 
 }
 
-let magicalComponent = withRouter(App)
-export default magicalComponent
+
+export default withRouter(App)
 
 
 
