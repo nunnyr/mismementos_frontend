@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import { GeolocateControl } from 'react-map-gl';
-import ReactMapGL, {NavigationControl} from 'react-map-gl';
+import React, {useState} from 'react';
+// import { GeolocateControl } from 'react-map-gl';
+import ReactMapGL from 'react-map-gl'
+// import ReactMapGL, {NavigationControl} from 'react-map-gl';
 
 function Map() {
     const TOKEN ="pk.eyJ1Ijoia3NvbG9tb243IiwiYSI6ImNrZ2gzODEzdjA0OHkycWxmOXpkY2VhdDIifQ.lnW9qKBPgt5JkWPhEGml_A"

@@ -102,6 +102,7 @@ class App extends React.Component {
         token={this.state.token}
         memories={this.state.memories}
         addMemory={this.addMemory}
+        deleteMemory={this.deleteMemory}
       />
     } 
     // console.log("this is state in render profile", this.state.token)
@@ -169,25 +170,34 @@ class App extends React.Component {
 
 //addMemory to state helper function
 addMemory = (newMemory) => {
-  let copyOfMemories= [...this.state.memory, newMemory]
+  let copyOfMemories= [...this.state.memories, newMemory]
   this.setState({
     memories:copyOfMemories
   })
   //console.log("in add memory", newMemory)
 }
 
+deleteMemory=(deletedMemory)=>{
+  // console.log("in app js")
+    let copyOfMemories= this.state.memories.filter(memory => {
+      return memory.id !== deletedMemory
+    })
+    this.setState({
+      memories: copyOfMemories
+    })
+}
  
   render(){
     return (
       <div >
-        <NavBar token={this.state.token}/>
+        <NavBar token={this.state.token} handleLogout={this.handleLogout}/>
         <Switch>
           <Route path="/" exact component={Home}></Route>
           <Route path="/login" render={this.renderLoginForm}></Route>
           <Route path="/register" render={this.renderRegisterForm}></Route>
           <Route path="/profile" render={this.renderProfile}></Route>
          
-          {/* <Route render={ () => <p>Page not Found</p>}></Route> */}
+          <Route render={ () => <p>Page not Found</p>}></Route>
         </Switch>
 
       </div>

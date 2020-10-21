@@ -1,21 +1,18 @@
 import React from 'react';
 import MemoryContainer from './MemoryContainer'
+import MemoryForm from './MemoryForm'
 import { Card, Icon, Image,Segment } from 'semantic-ui-react'
 
 
 class ProfileContainer extends React.Component {
     
     render(){
-       
-        // if(this.props.memories)
-        //Why are memories not being passed down and if there are no memories 
-        //then the form 100% needs to show up to add
-
         
         let allMemories= this.props.memories.map((singleMemory)=>{ 
             return <MemoryContainer key={singleMemory.id} 
                                     memories={singleMemory}
                                     addMemory={this.props.addMemory}
+                                    deleteMemory={this.props.deleteMemory}
                                     token={this.props.token}
 
             />
@@ -41,14 +38,14 @@ class ProfileContainer extends React.Component {
                     </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                    <a>
+                
                         <Icon name='user' />
-                    </a>
+                   
                     </Card.Content>
                  </Card>
 
                 {allMemories}
-                
+                <MemoryForm token={this.props.token} addMemory={this.props.addMemory} deleteMemory={this.props.deleteMemory}/>
              </Segment>
         )
 

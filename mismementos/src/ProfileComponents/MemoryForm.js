@@ -19,13 +19,12 @@ class MemoryForm extends React.Component{
         this.setState({
             [evt.target.name]: evt.target.value
         })
-        console.log("Handle Change",evt.target.value)
+        // console.log("Handle Change",evt.target.value)
     }
 
     handleSubmit=(evt)=>{
         let {title, about, address, city, state, zipcode} = this.state
         evt.preventDefault()
-        console.log('Handle submit')
         fetch('http://localhost:3000/memories', {
             method: "POST",
             headers: {
@@ -44,7 +43,7 @@ class MemoryForm extends React.Component{
         .then(res => res.json())
         .then(createdMemory => {
             this.props.addMemory(createdMemory)
-            console.log("a memory was created 🥳")
+            // console.log("a memory was created 🥳")
         })
 
 

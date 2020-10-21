@@ -7,17 +7,21 @@ class MemoryContainer extends React.Component{
 
 
 
-    handleDeleteClick = () => {
-        
+    handleDeleteClick = (evt) => {
+        fetch(`http://localhost:3000/memories/${this.props.memories.id}`, {
+            method:"DELETE"
+        })
+        .then(resp=>resp.json())
+        .then(deletedMemory=>
+            this.props.deletedMemory(deletedMemory.id))
+        // console.log("handleDeleteClick", this.props.memories.id)
     } 
 
 
     render(){
-
-        
         // console.log("this is memory container", this.props)
         let {title, about, address, city, state, zipcode}= this.props.memories
-        console.log("this is the memory count", this.props.memories)
+        // console.log("this is the memory count", this.props.memories)
         return(
             <div>
             <Segment>
@@ -43,13 +47,7 @@ class MemoryContainer extends React.Component{
                     <Card.Description>
                         <span>Zipcode: {zipcode}</span>
                     </Card.Description>    
-            </Segment>
-
-                 {/* if(this.props.memories){ */}
-                    
-                    {/* <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/> */}
-                 {/* } */}
-                    <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/>
+            </Segment>             
             </div>
         )
     }

@@ -31,7 +31,8 @@ class LoginForm extends React.Component{
                 placeholder='Username'
                 onChange={this.handleChange}/>
               <Form.Input fluid label='Password' 
-                value={this.state.password} 
+                value={this.state.password}  
+                type= "password"
                 name="password"
                 placeholder='Password' 
                 onChange={this.handleChange}/>
