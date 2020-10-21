@@ -29,13 +29,13 @@ class MemoryForm extends React.Component{
             <Form>
              <Form.Group unstackable widths={2}>
                  <Form.Input label='Title' placeholder='Title' value={title} onChange={this.handleChange}/>
-                 <Form.Input label='about' placeholder='About' value={about} onChange={this.handleChange}/>
+                 <Form.Input label='About' placeholder='About' value={about} onChange={this.handleChange}/>
              </Form.Group>
              <Form.Group widths={2}>
                  <Form.Input label='Address' placeholder='Address' value={address} onChange={this.handleChange}/>
-                 <Form.Input label='city' placeholder='City' value={city} onChange={this.handleChange}/>
-                 <Form.Input label='state' placeholder='State' value={state} onChange={this.handleChange}/>
-                 <Form.Input label='zipcode' placeholder='Zipcode' value={zipcode} onChange={this.handleChange}/>
+                 <Form.Input label='City' placeholder='City' value={city} onChange={this.handleChange}/>
+                 <Form.Input label='State' placeholder='State' value={state} onChange={this.handleChange}/>
+                 <Form.Input label='Zipcode' placeholder='Zipcode' value={zipcode} onChange={this.handleChange}/>
              </Form.Group>
              <Button type='submit'>Submit</Button>
             </Form>

@@ -3,8 +3,8 @@ import Home from './components/Home'
 import ProfileContainer from './ProfileComponents/ProfileContainer'
 import NavBar from './components/NavBar'
 import LoginForm from './components/LoginForm'
+import RegisterForm from './components/RegisterForm'
 import { Button} from 'semantic-ui-react'
-
 import './App.css';
 
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
@@ -25,8 +25,6 @@ class App extends React.Component {
     token: ""
   }
 
-
-
   componentDidMount(){
     //when a user needs to sign in/out their token has to go 
     //to the backend
@@ -46,10 +44,10 @@ class App extends React.Component {
 
 
 
-  //create handleResponse
+  //create handleResponse for login information for user
   handleResponse = (res) => {
-    console.log("first res", res)
-    if(Response.error){
+    // console.log("first res", res)
+    if(res.error){
       console.error(res.error)
     } else {
       localStorage.token = res.token 
@@ -65,33 +63,34 @@ class App extends React.Component {
         memories: res.user.memories,
         token: res.user.token
       })
-      console.log("zipcode", this.state.zipcode)
+      // console.log("zipcode", this.state.zipcode)
       this.props.history.push("/profile")
     }
   }
 
-  
+  // login form for existing user
+
   renderLoginForm = (routerProps) => {
     // console.log("this is the login router props",  routerProps)
-    console.log("This is token 👀", this.state.token)
-    // if(this.state.token){
-    //   return <Button onClick={this.handleLogout}>Log Out</Button> 
-    // }
-    // else if(!this.state.token){
-      console.log("in the else if 🙃")
+    // console.log("This is token 👀", this.state.token)
+    if(this.state.token){
+      return <Button onClick={this.handleLogout}>Log Out</Button> 
+    } else if(!this.state.token){
+      // console.log("in the else if 🙃")
       return <LoginForm handleLoginSubmit={this.handleLoginSubmit}/>
-    // }
+    }
   }
 
-   
-  // renderRegisterForm = (routerProps) => {
-  //   console.log("this is the register router props",  routerProps)
-  //     return <RegisterForm handleSubmit={this.props.handleRegisterSubmit}/>
-  // }
+  // rendering registration form
+
+  renderRegisterForm = (routerProps) => {
+    // console.log("this is the register router props",  routerProps)
+      return <RegisterForm handleSubmit={this.handleRegisterSubmit}/>
+  }
 
   renderProfile = (routerProps) => {
     // console.log("these are routerProps", routerProps)
-    if(this.state.token) {
+     if(this.state.token){
       return <ProfileContainer
         id={this.state.id}
         username={this.state.username}
@@ -107,6 +106,8 @@ class App extends React.Component {
     }
   }
 
+  // takes in information from Login Form
+
   handleLoginSubmit = (userInfo) => {
     // console.log("we are inside of the handle login submit", userInfo)
     fetch("http://localhost:3000/users/login", {
@@ -120,7 +121,8 @@ class App extends React.Component {
       })
     })
     .then(res => res.json())
-    .then(this.responseHandler)
+    .then(this.handleResponse)
+    // .then(this.responseHandler)
 
   }
 
@@ -146,7 +148,7 @@ class App extends React.Component {
   }
 
   responseHandler = (res) => {
-    console.log("this be an answer 😎", res)
+    // console.log("this be an answer 😎", res)
 
     let {id, username, password, avatar, bio, city, state, zipcode, memories} = res.user
     if(res.error){
@@ -183,8 +185,6 @@ addMemory = (newMemory) => {
  
   render(){
     return (
-     
-      
       <div >
         <NavBar/>
         <Switch>
