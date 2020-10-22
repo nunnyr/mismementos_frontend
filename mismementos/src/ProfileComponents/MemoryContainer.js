@@ -1,7 +1,6 @@
 import React from 'react'
-import Map from './Map'
-import MemoryForm from './MemoryForm'
-import {Header, Segment, Icon, Popup, Card, Button} from 'semantic-ui-react'
+import Notes from './Notes'
+import { Segment, Icon, Popup, Card, Button} from 'semantic-ui-react'
 
 class MemoryContainer extends React.Component{
 
@@ -13,15 +12,19 @@ class MemoryContainer extends React.Component{
         })
         .then(resp=>resp.json())
         .then(deletedMemory=>
-            this.props.deletedMemory(deletedMemory.id))
+            this.props.deleteMemory(deletedMemory.id))
         // console.log("handleDeleteClick", this.props.memories.id)
     } 
 
 
     render(){
+
+        let notesArray= this.props.memories.notes.map((singleNote)=>{
+            return <Notes key={singleNote.id}
+                          reflection={singleNote.reflection}  /> 
+        })
         // console.log("this is memory container", this.props)
         let {title, about, address, city, state, zipcode}= this.props.memories
-        // console.log("this is the memory count", this.props.memories)
         return(
             <div>
             <Segment>
@@ -47,7 +50,8 @@ class MemoryContainer extends React.Component{
                     <Card.Description>
                         <span>Zipcode: {zipcode}</span>
                     </Card.Description>    
-            </Segment>             
+            </Segment>      
+            {notesArray}       
             </div>
         )
     }

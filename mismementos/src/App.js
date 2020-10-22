@@ -4,7 +4,7 @@ import ProfileContainer from './ProfileComponents/ProfileContainer'
 import NavBar from './components/NavBar'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
-import { Button} from 'semantic-ui-react'
+import { Container, Button} from 'semantic-ui-react'
 import './App.css';
 
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
@@ -72,7 +72,7 @@ class App extends React.Component {
     // console.log("this is the login router props",  routerProps)
     // console.log("This is token 👀", this.state.token)
     if(this.state.token){
-      return <Button onClick={this.handleLogout}>Log Out</Button> 
+      return <Container><Button floated="right" onClick={this.handleLogout}>Log Out</Button></Container>
     } else if(!this.state.token){
       // console.log("in the else if 🙃")
       return <LoginForm handleLoginSubmit={this.handleLoginSubmit}/>
@@ -101,6 +101,7 @@ class App extends React.Component {
         zipcode={this.state.zipcode}
         token={this.state.token}
         memories={this.state.memories}
+        // notes={this.state.memories.notes}
         addMemory={this.addMemory}
         deleteMemory={this.deleteMemory}
       />

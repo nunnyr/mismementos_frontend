@@ -1,7 +1,7 @@
 import React from 'react';
 import Map from '../ProfileComponents/Map'
 import {NavLink} from 'react-router-dom'
-import { Header, Icon, Image, Menu, Segment, Sidebar, Button } from 'semantic-ui-react'
+import { Header, Icon, Image, Menu, Segment, Sidebar} from 'semantic-ui-react'
 
 
 const NavBar = (props) => {
