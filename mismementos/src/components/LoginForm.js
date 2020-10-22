@@ -15,6 +15,7 @@ class LoginForm extends React.Component{
   }
   
   handleChange=(evt)=>{
+    console.log("this is evt", evt.target.value)
     this.setState({
       [evt.target.name]:evt.target.value
     })

@@ -1,7 +1,7 @@
 import React from 'react';
 import MemoryContainer from './MemoryContainer'
 import MemoryForm from './MemoryForm'
-import { Card, Icon, Image,Segment } from 'semantic-ui-react'
+import { Card, Icon, Image, Segment } from 'semantic-ui-react'
 
 
 class ProfileContainer extends React.Component {
@@ -11,7 +11,6 @@ class ProfileContainer extends React.Component {
         let allMemories= this.props.memories.map((singleMemory)=>{ 
             return <MemoryContainer key={singleMemory.id} 
                                     memories={singleMemory}
-                                    addMemory={this.props.addMemory}
                                     deleteMemory={this.props.deleteMemory}
                                     token={this.props.token}
 
@@ -26,6 +25,7 @@ class ProfileContainer extends React.Component {
 
                  <Card>
                     <Image src={avatar} wrapped ui={false} />
+                    
                     <Card.Content>
                     <Card.Header>{username}</Card.Header>
                     <Card.Meta>

@@ -28,36 +28,21 @@ const NavBar = (props) => {
                 </Menu.Item>
                 <Menu.Item>
                     <Icon name='key' />
-                    {/* {props.token? 
-                  <Button onClick={handleLogoutClick}>Log Out</Button> 
-                         : */}
-                  <NavLink to="/login">Login</NavLink>
-                {/* } */}
+                    <NavLink to="/login">Login</NavLink>
                 </Menu.Item>
                 <Menu.Item >
                     <Icon name='camera' />
                     <NavLink to="/register">Register</NavLink>
                 </Menu.Item>
                 <Menu.Item>
-                    <Icon name='file' />
+                    <Icon name='user' />
                     <NavLink to="/profile">Profile</NavLink>
                 </Menu.Item>
                 </Sidebar>
-
                 <Sidebar.Pusher>
                 <Segment basic>
-                    {/* <Header as='h3'>Application Content</Header> */}
                     {props.token ? <Map/> : <Image src='https://miro.medium.com/max/2600/0*xTG-uAPqeKqDrPw4.png' />}
-                    {/* {props.token ? 
-                     <Menu.Item>
-                     <Icon name='key'/>
-                     <NavLink to="/logout">Logout</NavLink>
-                    </Menu.Item>
-                     : 
-                     null
-                     } */}
-
-                    </Segment>
+                </Segment>
                 </Sidebar.Pusher>
             </Sidebar.Pushable>
               
