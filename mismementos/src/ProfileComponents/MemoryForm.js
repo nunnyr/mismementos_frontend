@@ -44,8 +44,17 @@ class MemoryForm extends React.Component{
         .then(res => res.json())
         .then(createdMemory => {
             this.props.addMemory(createdMemory)
+            this.setState({
+                title:"",
+                about:"",
+                address:"",
+                city:"",
+                state:"",
+                zipcode: 10027
+            })
             // console.log("a memory was created 🥳")
         })
+    
     }
 
     handleClick=(evt)=>{

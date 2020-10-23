@@ -21,6 +21,7 @@ const NavBar = (props) => {
                 vertical
                 visible
                 width='thin'
+                direction="right"
                 >
                 <Menu.Item>
                     <Icon name='home' />

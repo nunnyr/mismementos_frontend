@@ -1,13 +1,18 @@
 import React from 'react'
-import { Segment} from 'semantic-ui-react'
+import { Header, Segment} from 'semantic-ui-react'
+
 class Notes extends React.Component{
 
+    
     render(){
-        console.log("this is notes", this.props)
+        // console.log("this is notes", this.props)
         return(
-            <Segment.Group stacked >
-            <Segment>Reflections: {this.props.reflection}</Segment>
-          </Segment.Group>
+            <div>
+                <Header size='small'>Notes:</Header>
+                <Segment>
+                       Reflections: {this.props.reflection}
+                </Segment>
+            </div>
         )
     }
 

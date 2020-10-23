@@ -1,8 +1,7 @@
 import React from 'react';
 import MemoryContainer from './MemoryContainer'
 import MemoryForm from './MemoryForm'
-import NotesForm from './NotesForm'
-import { Card, Icon, Image, Segment } from 'semantic-ui-react'
+import { Card, Icon, Image, Segment} from 'semantic-ui-react'
 
 
 class ProfileContainer extends React.Component {
@@ -14,6 +13,7 @@ class ProfileContainer extends React.Component {
                                     memories={singleMemory}
                                     deleteMemory={this.props.deleteMemory}
                                     token={this.props.token}
+                                    addNewNote={this.props.addNewNote}
 
             />
         })
@@ -39,15 +39,14 @@ class ProfileContainer extends React.Component {
                     </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                
                         <Icon name='user' />
-                   
                     </Card.Content>
                  </Card>
-
                 {allMemories}
-                <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/>
-                <NotesForm token={this.props.token}/>
+
+                <Segment>
+                    <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/>
+                </Segment>
              </Segment>
         )
 

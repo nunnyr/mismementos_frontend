@@ -45,7 +45,7 @@ class App extends React.Component {
 
   //create handleResponse for login information for user
   helpHandleResponse = (res) => {
-    console.log("first res", res)
+    // console.log("first res", res)
     if(res.error){
       console.error(res.error)
     } else {
@@ -60,9 +60,9 @@ class App extends React.Component {
         state: res.user.state,
         zipcode: res.user.zipcode,
         memories: res.user.memories,
+       
         token: res.token
       })
-      // console.log(this.state.token)
       this.props.history.push("/profile")
     }
   }
@@ -79,6 +79,7 @@ class App extends React.Component {
     }
   }
 
+  
  
   // rendering registration form
   renderRegisterForm = (routerProps) => {
@@ -101,9 +102,10 @@ class App extends React.Component {
         zipcode={this.state.zipcode}
         token={this.state.token}
         memories={this.state.memories}
-        // notes={this.state.memories.notes}
+        addNewNote={this.addNewNoteToMemory}
         addMemory={this.addMemory}
         deleteMemory={this.deleteMemory}
+        updateMemory={this.updateMemory}
       />
     } 
     // console.log("this is state in render profile", this.state.token)
@@ -169,7 +171,7 @@ class App extends React.Component {
     localStorage.clear()
   }
 
-//addMemory to state helper function
+
 addMemory = (newMemory) => {
   let copyOfMemories= [...this.state.memories, newMemory]
   this.setState({
@@ -187,8 +189,35 @@ deleteMemory=(deletedMemory)=>{
       memories: copyOfMemories
     })
 }
- 
+
+updateMemory = (updatedMemory) => {
+  let copyOfMemories = this.state.memories.map((memory) => {
+    if(memory.id === updatedMemory.id){
+      return updatedMemory
+    } else {
+      return memory
+    }
+  })
+
+  this.setState({
+    memories: copyOfMemories
+  })
+
+}
+
+  addNewNoteToMemory = (newNote, memoryId) => {
+    let memory = this.state.memories.find(singleMemory=> singleMemory.id === memoryId)
+    let copyOfNotes = [...memory.notes, newNote]
+    let copyOfMemories = {
+      ...memory, 
+      notes: copyOfNotes
+    }
+    this.updateMemory(copyOfMemories)
+  }
+
+
   render(){
+    // console.log(this.state)
     return (
       <div >
         <NavBar token={this.state.token} handleLogout={this.handleLogout}/>
@@ -210,3 +239,13 @@ deleteMemory=(deletedMemory)=>{
 
 
 export default withRouter(App)
+
+
+
+
+
+
+
+
+
+
