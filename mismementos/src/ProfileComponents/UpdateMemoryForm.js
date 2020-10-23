@@ -91,7 +91,7 @@ class UpdateMemoryForm extends React.Component{
             </Segment>
                 :
             <Segment>
-                 <Button onClick={this.handleClick}>Edit Memory</Button>
+                 <Button color="twitter" onClick={this.handleClick}>Edit Memory</Button>
             </Segment>
     }
         </div>

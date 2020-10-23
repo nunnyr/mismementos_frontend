@@ -57,15 +57,15 @@ class NotesForm extends React.Component{
                                 <Form.Group unstackable widths={2}>
                                     <Form.Input label='Reflections' name="reflection" placeholder='Reflection' value={this.state.reflection} onChange={this.handleChange}/>
                                 </Form.Group>
-                                <Button type='submit'>Submit</Button>
+                                <Button color="olive" type='submit'>Submit</Button>
                             </Form>
                         <Segment>
-                            <Button onClick={this.handleClick}>Close</Button>
+                            <Button color="orange" onClick={this.handleClick}>Close</Button>
                         </Segment>
                     </Segment>
                         :
                     <Segment>
-                         <Button onClick={this.handleClick}>Add A New Reflection</Button>
+                         <Button color="twitter" onClick={this.handleClick}>Add A New Reflection</Button>
                     </Segment>
             }
                 </div>

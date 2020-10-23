@@ -85,15 +85,15 @@ class MemoryForm extends React.Component{
                                 <Form.Input label='State' name="state" placeholder='State' value={state} onChange={this.handleChange}/>
                                 <Form.Input label='Zipcode' name="zipcode" placeholder='Zipcode' value={zipcode} onChange={this.handleChange}/>
                             </Form.Group>
-                            <Button type='submit'>Submit</Button>
+                            <Button color="olive" type='submit'>Submit</Button>
                         </Form>
                     <Segment>
-                        <Button onClick={this.handleClick}>Close</Button>
+                        <Button color="orange" onClick={this.handleClick}>Close</Button>
                     </Segment>
                 </Segment>
                     :
                 <Segment>
-                     <Button onClick={this.handleClick}>Add A New Memory</Button>
+                     <Button color="orange" onClick={this.handleClick}>Add A New Memory</Button>
                 </Segment>
         }
             </div>

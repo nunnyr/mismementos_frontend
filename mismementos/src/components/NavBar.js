@@ -32,7 +32,7 @@ const NavBar = (props) => {
                     <NavLink to="/login">Login</NavLink>
                 </Menu.Item>
                 <Menu.Item >
-                    <Icon name='camera' />
+                    <Icon name='file' />
                     <NavLink to="/register">Register</NavLink>
                 </Menu.Item>
                 <Menu.Item>

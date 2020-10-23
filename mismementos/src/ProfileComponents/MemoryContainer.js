@@ -55,8 +55,8 @@ class MemoryContainer extends React.Component{
                         {title}
                     </Popup>
 
-                    <Button floated="right" onClick={this.handleDeleteClick}> X </Button>
-                    <Button floated="right" color="instagram" onClick={this.renderEditForm}>Get Edit Memory Button</Button>
+                    <Button floated="right" color="google plus" onClick={this.handleDeleteClick}> X </Button>
+                    <Button floated="right" color="linkedin" onClick={this.renderEditForm}>Get Edit Memory Button</Button>
                     
  
                     <Card.Description>
