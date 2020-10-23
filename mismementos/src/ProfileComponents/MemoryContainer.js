@@ -77,7 +77,8 @@ class MemoryContainer extends React.Component{
                     </Card.Description>    
             </Segment>      
             {this.state.showComponent ?
-                     <UpdateMemoryForm /> :
+                     <UpdateMemoryForm updateMemory={this.props.updateMemory} memories={this.props.memories}/> 
+                            :
                         null
                     }
             {notesArray}   

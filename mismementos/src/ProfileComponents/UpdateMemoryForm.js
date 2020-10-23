@@ -4,16 +4,20 @@ class UpdateMemoryForm extends React.Component{
 
 
     state={
-        title:" ",
-        about:" ",
-        address:"",
-        city:"",
-        state:"",
-        zipcode:"",
+        title: this.props.memories.title,
+        about:this.props.memories.about,
+        address:this.props.memories.address,
+        city:this.props.memories.city,
+        state:this.props.memories.state,
+        zipcode:this.props.memories.zipcode,
         open:false
     }
 
-      
+    handleChange=(evt)=>{
+        this.setState({
+            [evt.target.name]:evt.target.value
+        })
+    }
 
      handleClick=(evt)=>{
         this.setState({
@@ -21,23 +25,45 @@ class UpdateMemoryForm extends React.Component{
         })
      }
 
-     handleUpdateJob = (job, newStatus) => {
-        fetch(`http://localhost:3000/memories/${job.id}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            status: newStatus
-          })
+
+     handleSubmit=(evt)=>{
+        let {title, about, address, city, state, zipcode} = this.state
+        evt.preventDefault()
+        fetch(`http://localhost:3000/memories/${this.props.memories.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "Application/json",
+                "authorization": this.props.token
+            },
+            body: JSON.stringify({
+               title,
+               about,
+               address,
+               city,
+               state,
+               zipcode
+            })
         })
-        .then(response => response.json())
-        .then(this.updateJobFromState)
-      }
+        .then(res => res.json())
+        .then(updatedMemory => {
+            this.props.updateMemory(updatedMemory)
+            this.setState({
+                title,
+                about,
+                address,
+                city,
+                state,
+                zipcode
+            })
+            // console.log("a memory was created 🥳")
+        })
+    
+    }
+
 
     render(){
         let {title, about, address, city, state, zipcode,open}= this.state
-        console.log("in memory update form", this.props)
+        // console.log("in memory update form", this.props)
         return (
             <div>
             {open 

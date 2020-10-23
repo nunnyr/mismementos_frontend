@@ -12,6 +12,7 @@ class ProfileContainer extends React.Component {
             return <MemoryContainer key={singleMemory.id} 
                                     memories={singleMemory}
                                     deleteMemory={this.props.deleteMemory}
+                                    updateMemory={this.props.updateMemory}
                                     token={this.props.token}
                                     addNewNote={this.props.addNewNote}
                                     deleteNote={this.props.deleteNote}
@@ -46,7 +47,7 @@ class ProfileContainer extends React.Component {
                 {allMemories}
 
                 <Segment>
-                    <MemoryForm token={this.props.token} addMemory={this.props.addMemory}/>
+                    <MemoryForm token={this.props.token} addMemory={this.props.addMemory} />
                 </Segment>
              </Segment>
         )
