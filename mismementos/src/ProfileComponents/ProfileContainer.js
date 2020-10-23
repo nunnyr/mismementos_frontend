@@ -7,13 +7,14 @@ import { Card, Icon, Image, Segment} from 'semantic-ui-react'
 class ProfileContainer extends React.Component {
     
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         let allMemories= this.props.memories.map((singleMemory)=>{ 
             return <MemoryContainer key={singleMemory.id} 
                                     memories={singleMemory}
                                     deleteMemory={this.props.deleteMemory}
                                     token={this.props.token}
                                     addNewNote={this.props.addNewNote}
+                                    deleteNote={this.props.deleteNote}
 
             />
         })

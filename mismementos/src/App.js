@@ -106,6 +106,7 @@ class App extends React.Component {
         addMemory={this.addMemory}
         deleteMemory={this.deleteMemory}
         updateMemory={this.updateMemory}
+        deleteNote= {this.deleteNoteFromMemory}
       />
     } 
     // console.log("this is state in render profile", this.state.token)
@@ -214,6 +215,19 @@ updateMemory = (updatedMemory) => {
     }
     this.updateMemory(copyOfMemories)
   }
+
+  deleteNoteFromMemory=(deletedNote, memoryId) => {
+    let memory=this.state.memories.find(singleMemory=>singleMemory.id === memoryId)
+    let returnedNotes= memory.notes.filter(singleNote=>{
+      return singleNote.id !== deletedNote.id
+    }) 
+    let copyOfMemories= {
+      ...memory,
+      notes: returnedNotes
+    }
+    this.updateMemory(copyOfMemories)
+  }
+
 
 
   render(){

@@ -74,7 +74,7 @@ const myMemory = [
     },
     {
         "item": {
-        "place_id": 8,
+        "place_id": 9,
         "coordinates" : [ -73.8458, 40.7571 ],
         "name": "Queens Night Market",
         "description": "All the yummy food",
@@ -83,7 +83,7 @@ const myMemory = [
     },
     {
         "item": {
-        "place_id": 9,
+        "place_id": 10,
         "coordinates" : [ -74.151535, 40.579021 ],
         "name": "Red Beach Trip",
         "description": "This beach was soo unique, it took so long to get here",

@@ -36,11 +36,15 @@ class MemoryContainer extends React.Component{
     render(){
 
         let notesArray= this.props.memories.notes.map((singleNote)=>{
+            // console.log("this is single note", singleNote.id)
             return <Notes key={singleNote.id}
-                          reflection={singleNote.reflection}  /> 
+                          memories={this.props.memories}
+                          id={singleNote.id}
+                          reflection={singleNote.reflection}  
+                          deleteNote={this.props.deleteNote}/> 
         })
 
-        console.log("this is memory container", this.props)
+        // console.log("this is memory container", this.props)
 
         let {title, about, address, city, state, zipcode}= this.props.memories
         return(
@@ -52,7 +56,7 @@ class MemoryContainer extends React.Component{
                     </Popup>
 
                     <Button floated="right" onClick={this.handleDeleteClick}> X </Button>
-                    <Button floated="right" onClick={this.renderEditForm}>Get Edit Memory Button</Button>
+                    <Button floated="right" color="instagram" onClick={this.renderEditForm}>Get Edit Memory Button</Button>
                     
  
                     <Card.Description>

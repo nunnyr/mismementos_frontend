@@ -32,7 +32,7 @@ class NotesForm extends React.Component{
             },
             body: JSON.stringify({
                reflection: this.state.reflection,
-               memory_id:this.props.memory.id 
+               memory_id: this.props.memory.id 
             })
         })
         .then(res => res.json())
@@ -45,7 +45,7 @@ class NotesForm extends React.Component{
     }
 
     render(){
-        console.log("in new form", this.props)
+        // console.log("in new form", this.props)
             return(
                 <div>
                     {this.state.open 
