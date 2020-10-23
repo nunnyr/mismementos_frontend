@@ -1,8 +1,9 @@
 import React from 'react'
 
+
 const Home = () => (
   <div>
-     Landing Page
+    <footer>By Nunny Reyes and Kalkidan Taye</footer>
   </div>
 )
 

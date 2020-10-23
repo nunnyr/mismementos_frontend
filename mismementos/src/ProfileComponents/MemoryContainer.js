@@ -2,6 +2,7 @@ import React from 'react'
 import Notes from './Notes'
 import NotesForm from './NotesForm'
 import UpdateMemoryForm from './UpdateMemoryForm'
+import NotesHeader from './NotesHeader'
 import { Header, Segment, Icon, Popup, Card, Button} from 'semantic-ui-react'
 
 class MemoryContainer extends React.Component{
@@ -77,6 +78,7 @@ class MemoryContainer extends React.Component{
                         null
                     }
             {notesArray}   
+            <NotesHeader />
             <NotesForm token={this.props.token}  memory={this.props.memories}  addNewNote={this.props.addNewNote}/>
             </div>
         )

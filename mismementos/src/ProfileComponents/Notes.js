@@ -8,7 +8,7 @@ class Notes extends React.Component{
         // console.log("this is notes", this.props)
         return(
             <div>
-                <Header size='small'>Notes:</Header>
+               
                 <Segment>
                        Reflections: {this.props.reflection}
                 </Segment>
