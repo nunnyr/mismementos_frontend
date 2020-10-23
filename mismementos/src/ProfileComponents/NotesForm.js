@@ -28,7 +28,7 @@ class NotesForm extends React.Component{
             method: "POST",
             headers: {
                 "Content-type": "Application/json",
-                // "authorization": this.props.token
+                "authorization": this.props.token
             },
             body: JSON.stringify({
                reflection: this.state.reflection,

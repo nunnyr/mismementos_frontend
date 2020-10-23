@@ -9,8 +9,7 @@ class MemoryContainer extends React.Component{
 
 
     state={
-        showComponent: false,
-        notes:[]
+        showComponent: false
     }
 
     handleDeleteClick = (evt) => {
@@ -18,8 +17,8 @@ class MemoryContainer extends React.Component{
             method:"DELETE"
         })
         .then(resp=>resp.json())
-        .then(deletedMemory=>
-            this.props.deleteMemory(deletedMemory.id))
+        .then(deletedMemory=>{
+            this.props.deleteMemory(deletedMemory.id)})
         // console.log("handleDeleteClick", this.props.memories.id)
     } 
 

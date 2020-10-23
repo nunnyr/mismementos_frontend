@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment} from 'semantic-ui-react'
+import { Header} from 'semantic-ui-react'
 
 class NotesHeader extends React.Component{
     render(){
