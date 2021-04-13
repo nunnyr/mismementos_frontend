@@ -1,68 +1,87 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## README
 
-In the project directory, you can run:
+## Mis Mementos
+## Table of Contents
+- About
+- Features
+- Getting Started
+- Stack
+- Contributors
+- Next Steps
 
-### `yarn start`
+## About
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Mis Mementos is a fullstack app that allows users to highlight different memories. Considering that we are all removed from our daily world with COVID-19 we wanted to create an app that highlighted our cherished memoreies. This app was created with three models using object relationship mapping.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Features
+Users are able to log in with their profile and create their memories. Their memories are displayed on a map and they have the ability to edit their memory.
 
-### `yarn test`
+## Getting Started
+To use our fullstack app, users will open their terminal and run the following commands for two different repos:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For the backend it is crucial that you first bundle install. Next steps:
 
-### `yarn build`
+- rails db:create
+- rails db:migrate
+- rails db:seed
+- rails s
+To run the frontend repo
+- npm install
+- npm start
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Have the rails server running on "localhost:3000"
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Stack
+Javascript/ React
+Ruby on Rails
+HTML
+CSS
+Bootstrap
+jQuery
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributors
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/nunnyr">
+        <img src="https://avatars2.githubusercontent.com/u/22527547?s=460&u=ad9c2d830938168f717cd28941b2f104c6677598&v=4" width="200px;" alt=""/><br/><sub><b>Nunny Reyes</b></sub>
+      </a><br />
+      <a href="https://github.com/wlcreate/Mod1_Restaurant_Reservation_App" title="Code">👩🏻‍💻</a> 
+      <a href="https://github.com/wlcreate/Mod1_Restaurant_Reservation_App" title="Documentation">📚</a> 
+      <a href="#ideas-nunny" title="Ideas, Planning, & Feedback">🌎</a>            
+    </td>
 
-### `yarn eject`
+  <td align="center">
+      <a href="https://github.com/wlcreate">
+        <img src="https://avatars.githubusercontent.com/u/57603757?v=4" width="200px;" alt=""/><br/><sub><b>Kalkidan Taye</b></sub>
+      </a><br />
+      <a href="https://github.com/wlcreate/Mod1_Restaurant_Reservation_App" title="Code">👩🏻‍💻</a> 
+      <a href="https://github.com/wlcreate/Mod1_Restaurant_Reservation_App" title="Documentation">📚</a> 
+      <a href="#ideas-waverley" title="Ideas, Planning, & Feedback">💡</a>            
+    </td>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  </tr>
+</table>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Next Steps
+- We would like ouy map to include other logos and images for memories.  
 
-## Learn More
+- Work on making this model accessible using accessibility tools.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Incorporate additional models.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Create rspec files to test our fullstack model.
 
-### Code Splitting
+- Add more validations for forms.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Acknowledgements
+We would like to thank:
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Eric Kim
+- Sylwia Vargas
+- Annie Zheng
+- Isabel K. Lee
