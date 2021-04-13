@@ -21,13 +21,13 @@ Users are able to log in with their profile and create their memories. Their mem
 ## Getting Started
 To use our fullstack app, users will open their terminal and run the following commands for two different repos:
 
-For the backend it is crucial that you first bundle install. Next steps:
+### For the backend it is crucial that you first bundle install. Next steps:
 
 - rails db:create
 - rails db:migrate
 - rails db:seed
 - rails s
-To run the frontend repo
+### To run the frontend repo
 - npm install
 - npm start
 
